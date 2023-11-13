@@ -27,8 +27,8 @@ namespace Assignment_5_Observers
         {
             // Initializing the list of observers when WeatherData is instantiated
             observers = new List<IObserver>();
+            weatherData = new WeatherDataObject();
         }
-        // Method to register an observer
         public void RegisterObserver(IObserver observer)
         {
             observers.Add(observer);
@@ -58,6 +58,7 @@ namespace Assignment_5_Observers
             weatherData.Pressure = pressure;
             weatherData.WeatherPrediction = weatherPrediction;
             weatherData.WindSpeed = windSpeed;
+
             NotifyObservers();
         }
     }

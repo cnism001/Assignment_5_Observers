@@ -1,4 +1,6 @@
-﻿namespace Assignment_5_Observers
+﻿using System;
+
+namespace Assignment_5_Observers
 {
     public interface IObserver
     {
@@ -14,7 +16,7 @@
             
             // Since its a proof-of-concept, it simply prints the current conditions, each on new line.
             System.Console.WriteLine($"Current Conditions:\n Temperature: {data.Temperature}°C\n " +
-                $"Humidity: {data.Humidity}%\n Pressure: {data.Pressure} hPa\n Weather Prediction: {data.WeatherPrediction}");
+                $"Humidity: {data.Humidity}%\n Pressure: {data.Pressure} hPa");
         }
     }
     public class WeatherStatsDisplay : IObserver
@@ -42,7 +44,8 @@
             // Calculate the average temperature
             //if number of readings is 0, the avgTemp is set as 0
             float avgTemp = numReadings > 0 ? tempSum / numReadings : 0;
-
+            //Round avgTemp to 1 decimal point as float
+            avgTemp = (float)Math.Round(avgTemp, 1);
             System.Console.WriteLine($"Weather Statistics:\n Avg Temperature: {avgTemp}°C\n Max Temperature: {maxTemp}°C\n Min Temperature: {minTemp}°C");
         }
     }
@@ -67,14 +70,16 @@
     }
     public class WindSpeedDisplay : IObserver
     {
+        private float windSpeed;
         // Update method implementation for wind speed display
         public void Update(WeatherDataObject data)
         {
-            // Assuming wind speed is a new property in WeatherDataObject
-            DisplayWindSpeed(data.WindSpeed);
+            // Wind speed is a new test property in WeatherDataObject
+            windSpeed = data.WindSpeed;
+            DisplayWindSpeed();
         }
 
-        private void DisplayWindSpeed(float windSpeed)
+        private void DisplayWindSpeed()
         {
             System.Console.WriteLine($"Wind Speed: {windSpeed} km/h");
         }

@@ -17,12 +17,14 @@ namespace Assignment_5_Observers
             CurrentConditionsDisplay currentConditionsDisplay = new CurrentConditionsDisplay();
             WeatherStatsDisplay weatherStatsDisplay = new WeatherStatsDisplay();
             ForecastDisplay forecastDisplay = new ForecastDisplay();
+            WindSpeedDisplay windSpeedDisplay = new WindSpeedDisplay();
             //new displays would be added here
 
             // Register observers with the WeatherData object
             weatherData.RegisterObserver(currentConditionsDisplay);
             weatherData.RegisterObserver(weatherStatsDisplay);
             weatherData.RegisterObserver(forecastDisplay);
+            weatherData.RegisterObserver(windSpeedDisplay);
 
             // Test measurements, in full programm here you would fetch the data from Weather-o-Rama
             weatherData.SetMeasurements(15.3f, 35.0f, 1010.0f, "Clear sky and Sunny",10.6f);
