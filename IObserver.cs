@@ -17,4 +17,33 @@
                 $"Humidity: {data.Humidity}%\n Pressure: {data.Pressure} hPa\n Weather Prediction: {data.WeatherPrediction}");
         }
     }
+    public class WeatherStatsDisplay : IObserver
+    {
+        private float maxTemp = float.MinValue;
+        private float minTemp = float.MaxValue;
+        private float tempSum = 0.0f;
+        private int numReadings = 0;
+
+        // Update method  for weather statistics
+        public void Update(WeatherDataObject data)
+        {
+            // Update temperature statistics using the data provided
+            if (data.Temperature > maxTemp) { maxTemp = data.Temperature; }
+            if (data.Temperature < minTemp) { minTemp = data.Temperature; }
+            tempSum += data.Temperature;
+            numReadings++;
+
+            // Display the updated statistics
+            DisplayStats();
+        }
+
+        private void DisplayStats()
+        {
+            // Calculate the average temperature
+            //if number of readings is 0, the avgTemp is set as 0
+            float avgTemp = numReadings > 0 ? tempSum / numReadings : 0;
+
+            System.Console.WriteLine($"Weather Statistics:\n Avg Temperature: {avgTemp}°C\n Max Temperature: {maxTemp}°C\n Min Temperature: {minTemp}°C");
+        }
+    }
 }
