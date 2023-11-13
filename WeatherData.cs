@@ -6,16 +6,22 @@ using System.Threading.Tasks;
 
 namespace Assignment_5_Observers
 {
+    public class WeatherDataObject
+    {
+        // Properties for various weather measurement variables
+        public float Temperature { get; set; }
+        public float Humidity { get; set; }
+        public float Pressure { get; set; }
+        public string WeatherPrediction { get; set; }
+
+        // Additional properties can be added here without affecting the observers
+    }
     public class WeatherData
     {
         // A list of registered observers
         private List<IObserver> observers;
+        private WeatherDataObject weatherData;
 
-       
-        private float temperature;
-        private float humidity;
-        private float pressure;
-        private string weatherPrediction;
         public WeatherData()
         {
             // Initializing the list of observers when WeatherData is instantiated
@@ -39,18 +45,19 @@ namespace Assignment_5_Observers
             // Loop through all registered observers and call their Update method
             foreach (var observer in observers)
             {
-                observer.Update(temperature, humidity, pressure, weatherPrediction);
+                observer.Update(weatherData);
             }
         }
         // Method to set the measurements and notify observers
-        public void SetMeasurements(float temperature, float humidity, float pressure)
+        public void SetMeasurements(float temperature, float humidity, float pressure, string weatherPrediction)
         {
             // Set the current weather measurements
-            this.temperature = temperature;
-            this.humidity = humidity;
-            this.pressure = pressure;
+            weatherData.Temperature = temperature;
+            weatherData.Humidity = humidity;
+            weatherData.Pressure = pressure;
+            weatherData.WeatherPrediction = weatherPrediction;
 
-           NotifyObservers();
+            NotifyObservers();
         }
     }
 }
