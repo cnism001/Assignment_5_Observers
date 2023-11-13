@@ -46,4 +46,23 @@
             System.Console.WriteLine($"Weather Statistics:\n Avg Temperature: {avgTemp}°C\n Max Temperature: {maxTemp}°C\n Min Temperature: {minTemp}°C");
         }
     }
+    public class ForecastDisplay : IObserver
+    {
+        private string lastForecast = "";
+
+        // Update method implementation for the forecast display
+        public void Update(WeatherDataObject data)
+        {
+            // Update the forecast using the data provided
+            lastForecast = data.WeatherPrediction;
+
+            // Display the updated forecast
+            DisplayForecast();
+        }
+
+        private void DisplayForecast()
+        {
+            System.Console.WriteLine($"Weather Forecast: {lastForecast}");
+        }
+    }
 }
