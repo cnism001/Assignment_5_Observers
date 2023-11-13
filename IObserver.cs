@@ -65,4 +65,18 @@
             System.Console.WriteLine($"Weather Forecast: {lastForecast}");
         }
     }
+    public class WindSpeedDisplay : IObserver
+    {
+        // Update method implementation for wind speed display
+        public void Update(WeatherDataObject data)
+        {
+            // Assuming wind speed is a new property in WeatherDataObject
+            DisplayWindSpeed(data.WindSpeed);
+        }
+
+        private void DisplayWindSpeed(float windSpeed)
+        {
+            System.Console.WriteLine($"Wind Speed: {windSpeed} km/h");
+        }
+    }
 }

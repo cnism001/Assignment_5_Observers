@@ -25,9 +25,9 @@ namespace Assignment_5_Observers
             weatherData.RegisterObserver(forecastDisplay);
 
             // Test measurements, in full programm here you would fetch the data from Weather-o-Rama
-            weatherData.SetMeasurements(15.3f, 35.0f, 1010.0f, "Clear sky and Sunny");
-            weatherData.SetMeasurements(18.1f, 90.0f, 1012.0f, "Intermittent rain");
-            weatherData.SetMeasurements(22.0f, 70.0f, 1013.0f, "Cloudy with low chance of rain");
+            weatherData.SetMeasurements(15.3f, 35.0f, 1010.0f, "Clear sky and Sunny",10.6f);
+            weatherData.SetMeasurements(18.1f, 90.0f, 1012.0f, "Intermittent rain",2.2f);
+            weatherData.SetMeasurements(22.0f, 70.0f, 1013.0f, "Cloudy with low chance of rain", 1f);
 
         }
     }

@@ -13,6 +13,7 @@ namespace Assignment_5_Observers
         public float Humidity { get; set; }
         public float Pressure { get; set; }
         public string WeatherPrediction { get; set; }
+        public float WindSpeed { get; set; }
 
         // Additional properties can be added here without affecting the observers
     }
@@ -49,14 +50,14 @@ namespace Assignment_5_Observers
             }
         }
         // Method to set the measurements and notify observers
-        public void SetMeasurements(float temperature, float humidity, float pressure, string weatherPrediction)
+        public void SetMeasurements(float temperature, float humidity, float pressure, string weatherPrediction, float windSpeed)
         {
             // Set the current weather measurements
             weatherData.Temperature = temperature;
             weatherData.Humidity = humidity;
             weatherData.Pressure = pressure;
             weatherData.WeatherPrediction = weatherPrediction;
-
+            weatherData.WindSpeed = windSpeed;
             NotifyObservers();
         }
     }
